@@ -117,27 +117,27 @@ int main(int argc, char* argv[]) {
     std::cout << "Starting " << algorithmName << " with depth: " << depth << "\n";
 
     // Initialize the chess board with the standard starting position
-
-    std::cout << "Input FEN (input 0 no FEN): ";
     std::string FEN = "";
-    std::cin >> FEN;
     StockDory::Board chessBoard;
-
-    if (FEN.compare("0") == 0) {
-        chessBoard = StockDory::Board();
-    }
-    else {
-        chessBoard = StockDory::Board(FEN);
+    int nThreads = 1;
+    if (algorithmChoice != 8) {
+        std::cout << "Input FEN (input 0 no FEN): ";
+        std::getline(std::cin, FEN);
+        if (FEN.compare("0") == 0) {
+            chessBoard = StockDory::Board();
+        }
+        else {
+            chessBoard = StockDory::Board(FEN);
+        }
+        std::cout << "Input number of threads (only applies to parallel algorithms, we tested betweeen 1-64): ";
+        std::cin >> nThreads;
     }
 
     Engine engine;
 
     // Determine which color is to move
     Color currentPlayer = chessBoard.ColorToMove();
-
-    int nThreads = 1;
-    std::cout << "Input number of threads (only applies to parallel algorithms, we tested betweeen 1-64): ";
-    std::cin >> nThreads;
+    
     omp_set_num_threads(nThreads);
 
     // Define a pair to hold the result (best move sequence and its score)
