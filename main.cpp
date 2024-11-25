@@ -11,6 +11,7 @@
 #include <omp.h>
 #include <fstream> // For file I/O
 #include <iomanip> // For formatting output
+#include <atomic>
 
 constexpr int maxDepth = 25;
 
@@ -236,17 +237,15 @@ int main(int argc, char* argv[]) {
         }
     }
     else if (algorithmChoice == 3) {
+        omp_set_nested(1);
         const char* mateIn3FENs[] = {
-            "7k/8/3NK3/5BN1/8/8/8/8 w - - 0 1",
-            "k7/3K4/3N4/2N5/8/3B4/8/8 w - - 0 1",
-            "8/8/2K5/7r/6r1/8/6k1/8 b - - 0 1",
-            "8/K7/7r/8/2k5/5bb1/8/8 b - - 0 1",
-            "8/K7/P6r/8/2k5/5bb1/8/8 b - - 0 1",
-            "8/8/8/8/k7/4Q3/3K4/8 w - - 0 1",
-            "8/8/k7/2K5/8/2Q5/b1R5/n7 w - - 0 1",
-            "8/8/k1K1b3/2n5/8/8/8/2R5 w - - 0 1",
-            "8/7P/k1K1b3/2n5/8/8/8/2R5 w - - 0 1",
-            "7k/7n/8/8/8/7B/7R/6RK w - - 0 1",
+            "8/8/8/8/8/1k6/2nb4/1K6 b - - 0 1",
+            "1r6/8/8/8/8/1k6/8/K7 b - - 0 1",
+            "1q6/8/8/8/8/1k6/8/K7 b - - 0 1",
+            "1q6/8/8/8/8/1k6/PPP5/K7 b - - 0 1",
+            "8/8/8/8/1k6/n2q4/PP6/K6R b - - 0 1",
+            "5k2/4p2Q/8/5P2/b5R1/8/3P4/3KR3 w - - 0 1",
+            "5k2/3p4/5K1P/8/8/8/8/8 w - - 0 1"
         };
         std::ofstream resultFile("results.txt");
         if (!resultFile.is_open()) {
@@ -258,7 +257,7 @@ int main(int argc, char* argv[]) {
             StockDory::Board chessBoard(fen);
             resultFile << "Current Fen: " << fen << "\n";
             std::cout << "Current Fen: " << fen << "\n" << std::endl;
-            for (int depth = 5; depth < 7; depth++) {
+            for (int depth = 3; depth < 5; depth++) {
                 std::cout << "Testing depth: " << depth << "\n";
                 if (chessBoard.ColorToMove() == White) {
                     int result = engine.minimaxMoveCounter<White>(
@@ -1490,4 +1489,97 @@ int main(int argc, char* argv[]) {
 //     return 0;
 // }
 
+//Local test to see the differences between PVS and YBWC
+// int main() {
+//     const char* mateIn3FENs[] = {
+//         "7k/8/3NK3/5BN1/8/8/8/8 w - - 0 1",
+//         "k7/3K4/3N4/2N5/8/3B4/8/8 w - - 0 1",
+//         "8/8/2K5/7r/6r1/8/6k1/8 b - - 0 1",
+//         "8/8/k1K1b3/2n5/8/8/8/2R5 w - - 0 1",
+//         "8/7P/k1K1b3/2n5/8/8/8/2R5 w - - 0 1",
+//         "7k/7n/8/8/8/7B/7R/6RK w - - 0 1"
+//     };
+//     Engine engine;
+//     std::cout << "Testing mate in 3 FENs\n";
+//     int numThreads[] = {64};
+//     for (const int threads: numThreads) {
+//         omp_set_num_threads(threads);
+//         printf("Threads: %d\n", threads);
+//
+//         int timesYBWCMoreMove = 0;
+//         int timesPVSMoreMove = 0;
+//         int timesYBWCMoreCrit = 0;
+//         int timesPVSMoreCrit = 0;
+//         int averageMoreMoves = 0;
+//         int averageMoreCrit = 0;
+//         int fasterYBWC = 0;
+//         int fasterPVS = 0;
+//         double averageYBWCTime = 0;
+//         double averagePVSTime = 0;
+//         for (const char* fen : mateIn3FENs) {
+//
+//             StockDory::Board chessBoard(fen);
+//             std::atomic<int> moveCount(0);
+//             std::atomic<int> critCount(0);
+//             double tstart = omp_get_wtime();
+//             auto result = engine.YBWCTest<White, 10>(chessBoard, -50000, 50000, 10, moveCount, critCount);
+//             double tend = omp_get_wtime();
+//             double ttaken = tend - tstart;
+//             printf("Time taken for main part: %f\n", ttaken);
+//
+//             std::atomic<int> moveCount2(0);
+//             std::atomic<int> critCount2(0);
+//             double tstart1 = omp_get_wtime();
+//             auto result2 = engine.PVSTest<White, 10>(chessBoard, -50000, 50000, 10, moveCount2, critCount2);
+//             double tend1 = omp_get_wtime();
+//             double ttaken1 = tend1 - tstart1;
+//             printf("Time taken for main part: %f\n", ttaken1);
+//             std::cout << "Total move YBWC count: " << moveCount.load() << std::endl;
+//             std::cout << "Total move PVS count: " << moveCount2.load() << std::endl;
+//             std::cout << "Total crit YBWC count: " << critCount.load() << std::endl;
+//             std::cout << "Total crit PVS count: " << critCount2.load() << std::endl;
+//             if (moveCount.load() < moveCount2.load()) {
+//                 timesPVSMoreMove++;
+//             }
+//             else if (moveCount.load() > moveCount2.load()) {
+//                 timesYBWCMoreMove++;
+//             }
+//             if (critCount.load() < critCount2.load()) {
+//                 timesPVSMoreCrit++;
+//             }
+//             else if (critCount.load() > critCount2.load()) {
+//                 timesYBWCMoreCrit++;
+//             }
+//
+//             if (ttaken < ttaken1) {
+//                 fasterYBWC++;
+//             }
+//             else if (ttaken > ttaken1) {
+//                 fasterPVS++;
+//             }
+//             averageMoreMoves += moveCount2.load() - moveCount.load();
+//             averageMoreCrit += critCount2.load() - critCount.load();
+//             averagePVSTime += ttaken1;
+//             averageYBWCTime += ttaken;
+//         }
+//         averageMoreMoves = averageMoreMoves/10;
+//         averageMoreCrit = averageMoreCrit/10;
+//         averagePVSTime = averagePVSTime/10;
+//         averageYBWCTime = averageYBWCTime/10;
+//         std::cout << "timesYBWCMoreMove: " << timesYBWCMoreMove << std::endl;
+//         std::cout << "timesPVSMoreMove: " << timesPVSMoreMove << std::endl;
+//         std::cout << "timesYBWCMoreCrit: " << timesYBWCMoreCrit << std::endl;
+//         std::cout << "timesPVSMoreCrit: " << timesPVSMoreCrit << std::endl;
+//         std::cout << "averageMoreMoves: " << averageMoreMoves << std::endl;
+//         std::cout << "averageMoreCrit: " << averageMoreCrit << std::endl;
+//         std::cout << "averageYBWCTime: " << averageYBWCTime << std::endl;
+//         std::cout << "averagePVSTime: " << averagePVSTime << std::endl;
+//         std::cout << "Faster YBWC: " << fasterYBWC << std::endl;
+//         std::cout << "Faster PVS: " << fasterPVS << std::endl;
+//     }
 
+
+
+
+
+}

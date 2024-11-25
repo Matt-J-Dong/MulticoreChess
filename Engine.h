@@ -5,13 +5,14 @@
 #ifndef ENGINE_H
 #define ENGINE_H
 #include <limits>
-
+#include <atomic>
 #include "Backend/Board.h"
 #include "Backend/Type/Move.h"
 #include "Backend/Type/Color.h"
 #include "Evaluation.h"
 #include <utility>
 #include <omp.h>
+#include <pthread.h>
 
 
 #include "SimplifiedMoveList.h"
@@ -598,6 +599,7 @@ class Engine {
                 // int thread = omp_get_thread_num();
                 // // printf("%d\n", thread);
                 // printf("I hit the for loop for thread %d \n", thread);
+                // printf("Thread ID: %lu\n", (unsigned long)pthread_self());
                 if (alpha >= beta) {
                     continue; // Mimic cutoff because you cannot break in
                 }
@@ -681,6 +683,7 @@ class Engine {
                 // int thread = omp_get_thread_num();
                 // // printf("%d\n", thread);
                 // printf("I hit the for loop for thread %d \n", thread);
+                // printf("Thread ID: %lu\n", (unsigned long)pthread_self());
                 if (alpha >= beta) {
                     continue; // Mimic cutoff because you cannot break in
                 }
@@ -838,6 +841,240 @@ class Engine {
                 #pragma omp critical
                 {
                     if (localResult.second > bestScore) {
+                        bestScore = localResult.second;
+                        bestLine[0] = nextMove;
+                        for (int j = 0; j < depth - 1; j++) {
+                            bestLine[j + 1] = localResult.first[j];
+                        }
+                        alpha = std::max(alpha, bestScore);
+                    }
+                }
+            }
+
+            return std::make_pair(bestLine, bestScore);
+        }
+
+        template<Color color, int maxDepth>
+        std::pair<std::array<Move, maxDepth>, int> YBWCTest(const StockDory::Board &chessBoard, int alpha, int beta, int depth, std::atomic<int>& moveCount,std::atomic<int>& critCount) {
+            std::array<Move, maxDepth> bestLine;
+            int bestScore = -50000;
+            // create move list for player
+            const StockDory::SimplifiedMoveList<color> moveList(chessBoard);
+             //check for mate
+            if (moveList.Count() == 0 and chessBoard.Checked<color>()) {
+                return std::make_pair(std::array<Move, maxDepth>(), -mateScore-depth);
+            }
+            //stalemate
+            else if (moveList.Count() == 0){
+                return std::make_pair(std::array<Move, maxDepth>(), 0);
+            }
+            if (depth == 0) {
+                int score = evaluation.eval(chessBoard);
+                if (color == Black) {
+                    score *= -1;
+                }
+                return std::make_pair(std::array<Move, maxDepth>(), score);
+            }
+
+            constexpr enum Color Ocolor = Opposite(color);
+
+            // Process the leftmost child sequentially
+            Move PV = moveList[0];
+            Square from = PV.From();
+            Square to = PV.To();
+            Piece promotion = PV.Promotion();
+            //create local copy for safety
+            StockDory::Board boardCopy = chessBoard;
+            PreviousState prevState = boardCopy.Move<0>(from, to, promotion);
+            std::pair<std::array<Move, maxDepth>, int> result = YBWCTest<Ocolor, maxDepth>(boardCopy, -beta, -alpha, depth - 1, moveCount, critCount);
+            moveCount++;
+            result.second = -result.second;
+            boardCopy.UndoMove<0>(prevState, from, to);
+            if (result.second > bestScore) {
+                bestScore = result.second;
+                bestLine[0] = PV;
+                //Store best line
+                for (int j = 0; j < depth - 1; j++) {
+                    bestLine[j + 1] = result.first[j];
+                }
+                alpha = std::max(alpha, bestScore);
+            }
+            //Cutoff
+            if (alpha >= beta) {
+                return std::make_pair(bestLine, bestScore);
+            }
+            //Dynamic schedule since we do not know the ordering of moves or the number of moves in each call
+            #pragma omp parallel for shared(alpha, beta) schedule(dynamic)
+            for (uint8_t i = 1; i < moveList.Count(); i++) {
+                // int thread = omp_get_thread_num();
+                // // printf("%d\n", thread);
+                // printf("I hit the for loop for thread %d \n", thread);
+                // printf("Thread ID: %lu\n", (unsigned long)pthread_self());
+                if (alpha >= beta) {
+                    continue; // Mimic cutoff because you cannot break in
+                }
+                //Private copy of the board for each thread
+                StockDory::Board threadBoard = chessBoard;
+                Move nextMove = moveList[i];
+                Square from = nextMove.From();
+                Square to = nextMove.To();
+                Piece promotion = nextMove.Promotion();
+                PreviousState prevState = threadBoard.Move<0>(from, to, promotion);
+                std::pair<std::array<Move, maxDepth>, int> localResult = YBWCTest<Ocolor, maxDepth>(threadBoard, -beta, -alpha, depth - 1, moveCount, critCount);
+                moveCount++;
+                localResult.second = -localResult.second;
+                threadBoard.UndoMove<0>(prevState, from, to);
+                #pragma omp critical
+                {
+                    if (localResult.second > bestScore) {
+                        critCount++;
+                        bestScore = localResult.second;
+                        bestLine[0] = nextMove;
+                        for (int j = 0; j < depth - 1; j++) {
+                            bestLine[j + 1] = localResult.first[j];
+                        }
+                        alpha = std::max(alpha, bestScore);
+                    }
+                }
+            }
+
+            return std::make_pair(bestLine, bestScore);
+        }
+template<Color color, int maxDepth>
+        std::pair<std::array<Move, maxDepth>, int> PVSTest(const StockDory::Board &chessBoard, int alpha, int beta, int depth,std::atomic<int>& moveCount,std::atomic<int>& critCount) {
+            std::array<Move, maxDepth> bestLine;
+            int bestScore = -50000;
+            // create move list for player
+            const StockDory::SimplifiedMoveList<color> moveList(chessBoard);
+             //check for mate
+            if (moveList.Count() == 0 and chessBoard.Checked<color>()) {
+                return std::make_pair(std::array<Move, maxDepth>(), -mateScore-depth);
+            }
+            //stalemate
+            else if (moveList.Count() == 0){
+                return std::make_pair(std::array<Move, maxDepth>(), 0);
+            }
+            if (depth == 0) {
+                int score = evaluation.eval(chessBoard);
+                if (color == Black) {
+                    score *= -1;
+                }
+                return std::make_pair(std::array<Move, maxDepth>(), score);
+            }
+
+            constexpr enum Color Ocolor = Opposite(color);
+
+            // Process the leftmost child sequentially
+            Move PV = moveList[0];
+            Square from = PV.From();
+            Square to = PV.To();
+            Piece promotion = PV.Promotion();
+            //create local copy for safety
+            StockDory::Board boardCopy = chessBoard;
+            PreviousState prevState = boardCopy.Move<0>(from, to, promotion);
+            std::pair<std::array<Move, maxDepth>, int> result = PVSTest<Ocolor, maxDepth>(boardCopy, -beta, -alpha, depth - 1, moveCount, critCount);
+            moveCount++;
+            result.second = -result.second;
+            boardCopy.UndoMove<0>(prevState, from, to);
+            if (result.second > bestScore) {
+                bestScore = result.second;
+                bestLine[0] = PV;
+                //Store best line
+                for (int j = 0; j < depth - 1; j++) {
+                    bestLine[j + 1] = result.first[j];
+                }
+                alpha = std::max(alpha, bestScore);
+            }
+            //Cutoff
+            if (alpha >= beta) {
+
+                return std::make_pair(bestLine, bestScore);
+            }
+            //Dynamic schedule since we do not know the ordering of moves or the number of moves in each call
+            #pragma omp parallel for shared(alpha, beta) schedule(dynamic)
+            for (uint8_t i = 1; i < moveList.Count(); i++) {
+                // int thread = omp_get_thread_num();
+                // // printf("%d\n", thread);
+                // printf("I hit the for loop for thread %d \n", thread);
+                if (alpha >= beta) {
+                    continue; // Mimic cutoff because you cannot break in
+                }
+                //Private copy of the board for each thread
+                StockDory::Board threadBoard = chessBoard;
+                Move nextMove = moveList[i];
+                Square from = nextMove.From();
+                Square to = nextMove.To();
+                Piece promotion = nextMove.Promotion();
+                PreviousState prevState = threadBoard.Move<0>(from, to, promotion);
+                std::pair<std::array<Move, maxDepth>, int> localResult = alphaBetaNegaParallelTest<Ocolor, maxDepth>(threadBoard, -beta, -alpha, depth - 1, moveCount, critCount);
+                moveCount++;
+                localResult.second = -localResult.second;
+                threadBoard.UndoMove<0>(prevState, from, to);
+                #pragma omp critical
+                {
+                    if (localResult.second > bestScore) {
+                        critCount++;
+                        bestScore = localResult.second;
+                        bestLine[0] = nextMove;
+                        for (int j = 0; j < depth - 1; j++) {
+                            bestLine[j + 1] = localResult.first[j];
+                        }
+                        alpha = std::max(alpha, bestScore);
+                    }
+                }
+            }
+
+            return std::make_pair(bestLine, bestScore);
+        }
+
+        template<Color color, int maxDepth>
+        std::pair<std::array<Move, maxDepth>, int> alphaBetaNegaParallelTest(const StockDory::Board &chessBoard, int alpha, int beta, int depth,std::atomic<int>& moveCount,std::atomic<int>& critCount) {
+            std::array<Move, maxDepth> bestLine;
+            int bestScore = -50000;
+            // create move list for player
+            const StockDory::SimplifiedMoveList<color> moveList(chessBoard);
+             //check for mate
+            if (moveList.Count() == 0 and chessBoard.Checked<color>()) {
+                return std::make_pair(std::array<Move, maxDepth>(), -mateScore-depth);
+            }
+            //stalemate
+            else if (moveList.Count() == 0){
+                return std::make_pair(std::array<Move, maxDepth>(), 0);
+            }
+            if (depth == 0) {
+                int score = evaluation.eval(chessBoard);
+                if (color == Black) {
+                    score *= -1;
+                }
+                return std::make_pair(std::array<Move, maxDepth>(), score);
+            }
+
+            constexpr enum Color Ocolor = Opposite(color);
+            //Dynamic schedule since we do not know the ordering of moves or the number of moves in each call
+            #pragma omp parallel for shared(alpha, beta) schedule(dynamic)
+            for (uint8_t i = 0; i < moveList.Count(); i++) {
+                // int thread = omp_get_thread_num();
+                // // printf("%d\n", thread);
+                // printf("I hit the for loop for thread %d \n", thread);
+                if (alpha >= beta) {
+                    continue; // Mimic cutoff because you cannot break in
+                }
+                //Private copy of the board for each thread
+                StockDory::Board threadBoard = chessBoard;
+                Move nextMove = moveList[i];
+                Square from = nextMove.From();
+                Square to = nextMove.To();
+                Piece promotion = nextMove.Promotion();
+                PreviousState prevState = threadBoard.Move<0>(from, to, promotion);
+                std::pair<std::array<Move, maxDepth>, int> localResult = alphaBetaNegaParallelTest<Ocolor, maxDepth>(threadBoard, -beta, -alpha, depth - 1, moveCount, critCount);
+                moveCount++;
+                localResult.second = -localResult.second;
+
+                threadBoard.UndoMove<0>(prevState, from, to);
+                #pragma omp critical
+                {
+                    if (localResult.second > bestScore) {
+                        critCount++;
                         bestScore = localResult.second;
                         bestLine[0] = nextMove;
                         for (int j = 0; j < depth - 1; j++) {
