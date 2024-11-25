@@ -574,7 +574,7 @@ int main(int argc, char* argv[]) {
                     for (int i = 0; i < 5; i++) {
                         if (chessBoard.ColorToMove() == White) {
                             tstart = omp_get_wtime();
-                            std::pair<std::array<Move, maxDepth>, int> result = engine.naiveParallelYBAlphaBeta<White, maxDepth>(
+                            std::pair<std::array<Move, maxDepth>, int> result = engine.naiveParallelPVAlphaBeta<White, maxDepth>(
                                 chessBoard,
                                 -50000,
                                 50000,
@@ -603,7 +603,7 @@ int main(int argc, char* argv[]) {
                         }
                         else if (chessBoard.ColorToMove() == Black) {
                             tstart = omp_get_wtime();
-                            std::pair<std::array<Move, maxDepth>, int> result = engine.naiveParallelYBAlphaBeta<Black, maxDepth>(
+                            std::pair<std::array<Move, maxDepth>, int> result = engine.naiveParallelPVAlphaBeta<Black, maxDepth>(
                                 chessBoard,
                                 -50000,
                                 50000,
