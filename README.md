@@ -27,6 +27,9 @@ cmake --build Build --config Release
 ```
 ./Build/MulticoreChess <depth of search>
 ```
+
+Note that the depth of search only applies to testing each function individually. It does not apply to the testing function (choice 8) - The testing function depths are fixed according to how we tested them.
+
 The results are written onto disk with the name "results-mN.txt" where N represents the mate number.
 
 ### Additional Notes
