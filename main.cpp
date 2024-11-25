@@ -121,6 +121,8 @@ int main(int argc, char* argv[]) {
     StockDory::Board chessBoard;
     int nThreads = 1;
     if (algorithmChoice != 8) {
+        std::cin.clear();
+        std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
         std::cout << "Input FEN (input 0 no FEN): ";
         std::getline(std::cin, FEN);
         if (FEN.compare("0") == 0) {
@@ -137,7 +139,7 @@ int main(int argc, char* argv[]) {
 
     // Determine which color is to move
     Color currentPlayer = chessBoard.ColorToMove();
-    
+
     omp_set_num_threads(nThreads);
 
     // Define a pair to hold the result (best move sequence and its score)
