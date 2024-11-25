@@ -131,6 +131,8 @@ int main(int argc, char* argv[]) {
         else {
             chessBoard = StockDory::Board(FEN);
         }
+        std::cin.clear();
+        std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
         std::cout << "Input number of threads (only applies to parallel algorithms, we tested betweeen 1-64): ";
         std::cin >> nThreads;
     }
