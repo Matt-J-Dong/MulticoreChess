@@ -20,11 +20,13 @@ depth4_minimax = [1.00, 1.87, 3.19, 4.59, 5.45, 6.56, 5.59]
 # Plot Depth 3 results
 plt.figure(figsize=(10, 6))
 plt.plot(threads, depth3_naive_ab, marker="o", label="Naive Parallel Alpha Beta")
-plt.plot(threads, depth3_naive_ybwc, marker="o", label="Naive YBWC Parallel Alpha Beta")
+plt.plot(
+    threads, depth3_naive_ybwc, marker="o", label="Naive Parallel Alpha Beta with PV"
+)
 plt.plot(threads, depth3_ybwc, marker="o", label="YBWC")
 plt.plot(threads, depth3_pvs, marker="o", label="PVS")
 plt.plot(threads, depth3_minimax, marker="o", label="Parallel Minimax")
-plt.title("Speedup Results for Mate in 2 (Depth 3)")
+plt.title("Inner Speedup Results for Mate in 2 (Depth 3)")
 plt.xlabel("Number of Threads")
 plt.ylabel("Speedup")
 plt.xscale("log", base=2)
@@ -36,11 +38,13 @@ plt.show()
 # Plot Depth 4 results
 plt.figure(figsize=(10, 6))
 plt.plot(threads, depth4_naive_ab, marker="o", label="Naive Parallel Alpha Beta")
-plt.plot(threads, depth4_naive_ybwc, marker="o", label="Naive YBWC Parallel Alpha Beta")
+plt.plot(
+    threads, depth4_naive_ybwc, marker="o", label="Naive Parallel Alpha Beta with PV"
+)
 plt.plot(threads, depth4_ybwc, marker="o", label="YBWC")
 plt.plot(threads, depth4_pvs, marker="o", label="PVS")
 plt.plot(threads, depth4_minimax, marker="o", label="Parallel Minimax")
-plt.title("Speedup Results for Mate in 2 (Depth 4)")
+plt.title("Inner Speedup Results for Mate in 2 (Depth 4)")
 plt.xlabel("Number of Threads")
 plt.ylabel("Speedup")
 plt.xscale("log", base=2)
