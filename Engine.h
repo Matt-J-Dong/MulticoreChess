@@ -546,7 +546,7 @@ class Engine {
         }
 
         template<Color color, int maxDepth>
-        std::pair<std::array<Move, maxDepth>, int> naiveParallelYBAlphaBeta(const StockDory::Board &chessBoard, int alpha, int beta, int depth) {
+        std::pair<std::array<Move, maxDepth>, int> naiveParallelPVAlphaBeta(const StockDory::Board &chessBoard, int alpha, int beta, int depth) {
             std::array<Move, maxDepth> bestLine;
             int bestScore = -50000;
             // create move list for player
@@ -577,7 +577,7 @@ class Engine {
             //create local copy for safety
             StockDory::Board boardCopy = chessBoard;
             PreviousState prevState = boardCopy.Move<0>(from, to, promotion);
-            std::pair<std::array<Move, maxDepth>, int> result = naiveParallelYBAlphaBeta<Ocolor, maxDepth>(boardCopy, -beta, -alpha, depth - 1);
+            std::pair<std::array<Move, maxDepth>, int> result = naiveParallelPVAlphaBeta<Ocolor, maxDepth>(boardCopy, -beta, -alpha, depth - 1);
             result.second = -result.second;
             boardCopy.UndoMove<0>(prevState, from, to);
             if (result.second > bestScore) {
@@ -854,6 +854,7 @@ class Engine {
             return std::make_pair(bestLine, bestScore);
         }
 
+        //Below are the functions used to test how many times the critical sections and moves are checked.
         template<Color color, int maxDepth>
         std::pair<std::array<Move, maxDepth>, int> YBWCTest(const StockDory::Board &chessBoard, int alpha, int beta, int depth, std::atomic<int>& moveCount,std::atomic<int>& critCount) {
             std::array<Move, maxDepth> bestLine;
