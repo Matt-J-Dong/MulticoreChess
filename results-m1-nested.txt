@@ -1,0 +1,441 @@
+Current Fen: 3qk3/3pp1P1/8/8/8/8/8/4K3 w - - 0 1
+Minimax moves: 9
+AlphaBeta moves: 9
+Sequential Minimax,1,9.52363e-05
+Parallel Minimax,1,0.000274909
+Parallel Minimax,2,7.60198e-05
+Parallel Minimax,4,6.46591e-05
+Parallel Minimax,8,9.61661e-05
+Sequential AlphaBeta,1,9.57727e-05
+Naive Parallel Alpha Beta,1,9.91821e-05
+Naive Parallel Alpha Beta,2,6.07729e-05
+Naive Parallel Alpha Beta,4,4.44651e-05
+Naive Parallel Alpha Beta,8,4.09722e-05
+Naive YBWC Parallel Alpha Beta,1,9.77755e-05
+Naive YBWC Parallel Alpha Beta,2,6.44684e-05
+Naive YBWC Parallel Alpha Beta,4,4.79102e-05
+Naive YBWC Parallel Alpha Beta,8,4.55856e-05
+YBWC,1,9.74298e-05
+YBWC,2,6.25253e-05
+YBWC,4,4.54187e-05
+YBWC,8,4.43935e-05
+PVS,1,9.90987e-05
+PVS,2,6.17146e-05
+PVS,4,4.65274e-05
+PVS,8,4.50492e-05
+Minimax moves: 88
+AlphaBeta moves: 17
+Sequential Minimax,1,0.000904703
+Parallel Minimax,1,0.000909698
+Parallel Minimax,2,0.00052681
+Parallel Minimax,4,0.000277603
+Parallel Minimax,8,0.000172424
+Sequential AlphaBeta,1,0.000152349
+Naive Parallel Alpha Beta,1,0.000154817
+Naive Parallel Alpha Beta,2,0.000141585
+Naive Parallel Alpha Beta,4,0.000146961
+Naive Parallel Alpha Beta,8,0.000165939
+Naive YBWC Parallel Alpha Beta,1,0.000155461
+Naive YBWC Parallel Alpha Beta,2,9.50575e-05
+Naive YBWC Parallel Alpha Beta,4,6.30021e-05
+Naive YBWC Parallel Alpha Beta,8,5.77211e-05
+YBWC,1,0.000155044
+YBWC,2,9.60112e-05
+YBWC,4,6.25014e-05
+YBWC,8,5.35846e-05
+PVS,1,0.000165927
+PVS,2,0.000160277
+PVS,4,0.00032295
+PVS,8,0.00201441
+Current Fen: 3qk3/3pp1Q1/8/8/8/8/8/4K3 w - - 0 1
+Minimax moves: 24
+AlphaBeta moves: 24
+Sequential Minimax,1,0.000273514
+Parallel Minimax,1,0.000274622
+Parallel Minimax,2,0.000164008
+Parallel Minimax,4,9.52244e-05
+Parallel Minimax,8,0.000111377
+Sequential AlphaBeta,1,0.00027703
+Naive Parallel Alpha Beta,1,0.000276804
+Naive Parallel Alpha Beta,2,0.000159132
+Naive Parallel Alpha Beta,4,9.71913e-05
+Naive Parallel Alpha Beta,8,0.000107431
+Naive YBWC Parallel Alpha Beta,1,0.000280762
+Naive YBWC Parallel Alpha Beta,2,0.000163472
+Naive YBWC Parallel Alpha Beta,4,0.00010581
+Naive YBWC Parallel Alpha Beta,8,0.000118959
+YBWC,1,0.000296199
+YBWC,2,0.000201261
+YBWC,4,0.000107503
+YBWC,8,0.000120366
+PVS,1,0.000290525
+PVS,2,0.000199378
+PVS,4,0.000110996
+PVS,8,8.01206e-05
+Minimax moves: 232
+AlphaBeta moves: 58
+Sequential Minimax,1,0.00281435
+Parallel Minimax,1,0.0025999
+Parallel Minimax,2,0.00130917
+Parallel Minimax,4,0.000723898
+Parallel Minimax,8,0.000435376
+Sequential AlphaBeta,1,0.000544596
+Naive Parallel Alpha Beta,1,0.000557256
+Naive Parallel Alpha Beta,2,0.000358641
+Naive Parallel Alpha Beta,4,0.000226283
+Naive Parallel Alpha Beta,8,0.00019269
+Naive YBWC Parallel Alpha Beta,1,0.000560808
+Naive YBWC Parallel Alpha Beta,2,0.000320232
+Naive YBWC Parallel Alpha Beta,4,0.000197697
+Naive YBWC Parallel Alpha Beta,8,0.000141668
+YBWC,1,0.000563312
+YBWC,2,0.000318444
+YBWC,4,0.000196171
+YBWC,8,0.000183177
+PVS,1,0.000599718
+PVS,2,0.000557625
+PVS,4,0.000698793
+PVS,8,0.00327624
+Current Fen: 6rk/6pp/7N/8/8/8/8/4K3 w - - 0 1
+Minimax moves: 9
+AlphaBeta moves: 9
+Sequential Minimax,1,9.3317e-05
+Parallel Minimax,1,0.000101042
+Parallel Minimax,2,6.97255e-05
+Parallel Minimax,4,4.63128e-05
+Parallel Minimax,8,4.44055e-05
+Sequential AlphaBeta,1,8.94904e-05
+Naive Parallel Alpha Beta,1,0.000101471
+Naive Parallel Alpha Beta,2,6.78778e-05
+Naive Parallel Alpha Beta,4,4.26173e-05
+Naive Parallel Alpha Beta,8,4.33207e-05
+Naive YBWC Parallel Alpha Beta,1,9.88007e-05
+Naive YBWC Parallel Alpha Beta,2,6.94275e-05
+Naive YBWC Parallel Alpha Beta,4,5.49912e-05
+Naive YBWC Parallel Alpha Beta,8,6.24299e-05
+YBWC,1,9.95159e-05
+YBWC,2,7.33376e-05
+YBWC,4,5.69701e-05
+YBWC,8,5.53966e-05
+PVS,1,0.000100625
+PVS,2,7.18236e-05
+PVS,4,5.49555e-05
+PVS,8,5.43356e-05
+Minimax moves: 79
+AlphaBeta moves: 26
+Sequential Minimax,1,0.000904989
+Parallel Minimax,1,0.000915182
+Parallel Minimax,2,0.00057379
+Parallel Minimax,4,0.000348938
+Parallel Minimax,8,0.000187635
+Sequential AlphaBeta,1,0.000258839
+Naive Parallel Alpha Beta,1,0.000270486
+Naive Parallel Alpha Beta,2,0.000230765
+Naive Parallel Alpha Beta,4,0.00016489
+Naive Parallel Alpha Beta,8,0.000195849
+Naive YBWC Parallel Alpha Beta,1,0.000271809
+Naive YBWC Parallel Alpha Beta,2,0.000184548
+Naive YBWC Parallel Alpha Beta,4,0.000135958
+Naive YBWC Parallel Alpha Beta,8,0.000130236
+YBWC,1,0.000256765
+YBWC,2,0.000166059
+YBWC,4,0.00013659
+YBWC,8,0.000166655
+PVS,1,0.000269091
+PVS,2,0.000252473
+PVS,4,0.000261939
+PVS,8,0.000989711
+Current Fen: 7k/8/8/8/8/7r/r7/4K3 b - - 0 1
+Minimax moves: 30
+AlphaBeta moves: 30
+Sequential Minimax,1,0.00032959
+Parallel Minimax,1,0.000415266
+Parallel Minimax,2,0.000193894
+Parallel Minimax,4,0.000107014
+Parallel Minimax,8,7.72119e-05
+Sequential AlphaBeta,1,0.000315428
+Naive Parallel Alpha Beta,1,0.000325596
+Naive Parallel Alpha Beta,2,0.000181782
+Naive Parallel Alpha Beta,4,0.000108254
+Naive Parallel Alpha Beta,8,7.68304e-05
+Naive YBWC Parallel Alpha Beta,1,0.000322497
+Naive YBWC Parallel Alpha Beta,2,0.000189054
+Naive YBWC Parallel Alpha Beta,4,0.000116599
+Naive YBWC Parallel Alpha Beta,8,9.21011e-05
+YBWC,1,0.00034039
+YBWC,2,0.000200152
+YBWC,4,0.000128341
+YBWC,8,0.000101113
+PVS,1,0.000334263
+PVS,2,0.000200081
+PVS,4,0.000119519
+PVS,8,9.01461e-05
+Minimax moves: 106
+AlphaBeta moves: 61
+Sequential Minimax,1,0.00110797
+Parallel Minimax,1,0.0011354
+Parallel Minimax,2,0.000593841
+Parallel Minimax,4,0.000345385
+Parallel Minimax,8,0.000211728
+Sequential AlphaBeta,1,0.000541008
+Naive Parallel Alpha Beta,1,0.000542641
+Naive Parallel Alpha Beta,2,0.000292289
+Naive Parallel Alpha Beta,4,0.000174272
+Naive Parallel Alpha Beta,8,0.000119865
+Naive YBWC Parallel Alpha Beta,1,0.000532734
+Naive YBWC Parallel Alpha Beta,2,0.000300574
+Naive YBWC Parallel Alpha Beta,4,0.000187755
+Naive YBWC Parallel Alpha Beta,8,0.000130546
+YBWC,1,0.000545859
+YBWC,2,0.000303829
+YBWC,4,0.000187182
+YBWC,8,0.000133252
+PVS,1,0.000573039
+PVS,2,0.000512278
+PVS,4,0.000868285
+PVS,8,0.00403537
+Current Fen: 8/8/8/8/8/2n3k1/r4b2/5K2 b - - 0 1
+Minimax moves: 31
+AlphaBeta moves: 31
+Sequential Minimax,1,0.000400448
+Parallel Minimax,1,0.000398791
+Parallel Minimax,2,0.000246465
+Parallel Minimax,4,0.000155699
+Parallel Minimax,8,0.000126088
+Sequential AlphaBeta,1,0.000321102
+Naive Parallel Alpha Beta,1,0.00032289
+Naive Parallel Alpha Beta,2,0.000210762
+Naive Parallel Alpha Beta,4,0.000129962
+Naive Parallel Alpha Beta,8,0.000117326
+Naive YBWC Parallel Alpha Beta,1,0.000335205
+Naive YBWC Parallel Alpha Beta,2,0.000217295
+Naive YBWC Parallel Alpha Beta,4,0.000153124
+Naive YBWC Parallel Alpha Beta,8,0.000139678
+YBWC,1,0.000312161
+YBWC,2,0.00021503
+YBWC,4,0.000160658
+YBWC,8,0.000131011
+PVS,1,0.000321662
+PVS,2,0.00020498
+PVS,4,0.000155342
+PVS,8,0.000119984
+Minimax moves: 43
+AlphaBeta moves: 43
+Sequential Minimax,1,0.000524485
+Parallel Minimax,1,0.00044347
+Parallel Minimax,2,0.00022949
+Parallel Minimax,4,0.000136685
+Parallel Minimax,8,8.99434e-05
+Sequential AlphaBeta,1,0.000345314
+Naive Parallel Alpha Beta,1,0.000347316
+Naive Parallel Alpha Beta,2,0.000195682
+Naive Parallel Alpha Beta,4,0.000112581
+Naive Parallel Alpha Beta,8,7.32422e-05
+Naive YBWC Parallel Alpha Beta,1,0.000351441
+Naive YBWC Parallel Alpha Beta,2,0.00019877
+Naive YBWC Parallel Alpha Beta,4,0.000120258
+Naive YBWC Parallel Alpha Beta,8,8.35538e-05
+YBWC,1,0.000359523
+YBWC,2,0.000227773
+YBWC,4,0.000149286
+YBWC,8,0.00150176
+PVS,1,0.000414598
+PVS,2,0.000465262
+PVS,4,0.000729525
+PVS,8,0.00137997
+Current Fen: 2q5/8/8/8/8/6k1/r7/4K3 b - - 0 1
+Minimax moves: 42
+AlphaBeta moves: 42
+Sequential Minimax,1,0.000450468
+Parallel Minimax,1,0.000462759
+Parallel Minimax,2,0.000259447
+Parallel Minimax,4,0.00014466
+Parallel Minimax,8,9.97186e-05
+Sequential AlphaBeta,1,0.000451696
+Naive Parallel Alpha Beta,1,0.000468516
+Naive Parallel Alpha Beta,2,0.000259411
+Naive Parallel Alpha Beta,4,0.00015099
+Naive Parallel Alpha Beta,8,9.58323e-05
+Naive YBWC Parallel Alpha Beta,1,0.000465333
+Naive YBWC Parallel Alpha Beta,2,0.000268221
+Naive YBWC Parallel Alpha Beta,4,0.000157833
+Naive YBWC Parallel Alpha Beta,8,0.000108647
+YBWC,1,0.000468194
+YBWC,2,0.000264859
+YBWC,4,0.000161481
+YBWC,8,0.000109935
+PVS,1,0.000470948
+PVS,2,0.000266504
+PVS,4,0.000154781
+PVS,8,0.000108898
+Minimax moves: 126
+AlphaBeta moves: 84
+Sequential Minimax,1,0.00150158
+Parallel Minimax,1,0.00138692
+Parallel Minimax,2,0.000723636
+Parallel Minimax,4,0.000385523
+Parallel Minimax,8,0.000236249
+Sequential AlphaBeta,1,0.000831223
+Naive Parallel Alpha Beta,1,0.000842369
+Naive Parallel Alpha Beta,2,0.000449359
+Naive Parallel Alpha Beta,4,0.000253105
+Naive Parallel Alpha Beta,8,0.00015353
+Naive YBWC Parallel Alpha Beta,1,0.000841486
+Naive YBWC Parallel Alpha Beta,2,0.000473237
+Naive YBWC Parallel Alpha Beta,4,0.000272453
+Naive YBWC Parallel Alpha Beta,8,0.000176334
+YBWC,1,0.000852442
+YBWC,2,0.000478387
+YBWC,4,0.000275993
+YBWC,8,0.000177228
+PVS,1,0.00089432
+PVS,2,0.000760424
+PVS,4,0.00119915
+PVS,8,0.00604905
+Current Fen: 8/8/8/5q2/8/6k1/r7/4K3 b - - 0 1
+Minimax moves: 46
+AlphaBeta moves: 46
+Sequential Minimax,1,0.000503838
+Parallel Minimax,1,0.000514495
+Parallel Minimax,2,0.00028547
+Parallel Minimax,4,0.000164902
+Parallel Minimax,8,0.000109291
+Sequential AlphaBeta,1,0.000497007
+Naive Parallel Alpha Beta,1,0.000517821
+Naive Parallel Alpha Beta,2,0.000282943
+Naive Parallel Alpha Beta,4,0.000159979
+Naive Parallel Alpha Beta,8,0.000115228
+Naive YBWC Parallel Alpha Beta,1,0.000495231
+Naive YBWC Parallel Alpha Beta,2,0.000275004
+Naive YBWC Parallel Alpha Beta,4,0.000144327
+Naive YBWC Parallel Alpha Beta,8,9.69052e-05
+YBWC,1,0.00044893
+YBWC,2,0.00025214
+YBWC,4,0.000147212
+YBWC,8,9.87768e-05
+PVS,1,0.000449848
+PVS,2,0.000251245
+PVS,4,0.000147974
+PVS,8,0.000100338
+Minimax moves: 114
+AlphaBeta moves: 90
+Sequential Minimax,1,0.00119548
+Parallel Minimax,1,0.00120124
+Parallel Minimax,2,0.000626791
+Parallel Minimax,4,0.000346828
+Parallel Minimax,8,0.000201333
+Sequential AlphaBeta,1,0.000867093
+Naive Parallel Alpha Beta,1,0.000877941
+Naive Parallel Alpha Beta,2,0.000465202
+Naive Parallel Alpha Beta,4,0.000262415
+Naive Parallel Alpha Beta,8,0.00015707
+Naive YBWC Parallel Alpha Beta,1,0.000880516
+Naive YBWC Parallel Alpha Beta,2,0.000486469
+Naive YBWC Parallel Alpha Beta,4,0.000281298
+Naive YBWC Parallel Alpha Beta,8,0.000186598
+YBWC,1,0.000889778
+YBWC,2,0.000492489
+YBWC,4,0.000284421
+YBWC,8,0.000184822
+PVS,1,0.000935793
+PVS,2,0.000762904
+PVS,4,0.00124806
+PVS,8,0.00609961
+Current Fen: 8/8/8/8/8/6k1/r2PP3/4K3 b - - 0 1
+Minimax moves: 16
+AlphaBeta moves: 16
+Sequential Minimax,1,0.000236082
+Parallel Minimax,1,0.000234759
+Parallel Minimax,2,0.000151408
+Parallel Minimax,4,9.58085e-05
+Parallel Minimax,8,6.22511e-05
+Sequential AlphaBeta,1,0.000186396
+Naive Parallel Alpha Beta,1,0.000183952
+Naive Parallel Alpha Beta,2,0.000112021
+Naive Parallel Alpha Beta,4,7.14779e-05
+Naive Parallel Alpha Beta,8,5.12004e-05
+Naive YBWC Parallel Alpha Beta,1,0.000185061
+Naive YBWC Parallel Alpha Beta,2,0.000111878
+Naive YBWC Parallel Alpha Beta,4,7.62343e-05
+Naive YBWC Parallel Alpha Beta,8,6.19054e-05
+YBWC,1,0.000190079
+YBWC,2,0.00011456
+YBWC,4,7.42078e-05
+YBWC,8,5.92113e-05
+PVS,1,0.00019455
+PVS,2,0.000115764
+PVS,4,7.47442e-05
+PVS,8,6.44326e-05
+Minimax moves: 108
+AlphaBeta moves: 31
+Sequential Minimax,1,0.00129368
+Parallel Minimax,1,0.00130255
+Parallel Minimax,2,0.000685275
+Parallel Minimax,4,0.000362086
+Parallel Minimax,8,0.000188339
+Sequential AlphaBeta,1,0.000276768
+Naive Parallel Alpha Beta,1,0.000284374
+Naive Parallel Alpha Beta,2,0.00018785
+Naive Parallel Alpha Beta,4,0.000138116
+Naive Parallel Alpha Beta,8,0.000119567
+Naive YBWC Parallel Alpha Beta,1,0.000281942
+Naive YBWC Parallel Alpha Beta,2,0.000167251
+Naive YBWC Parallel Alpha Beta,4,9.95874e-05
+Naive YBWC Parallel Alpha Beta,8,7.1764e-05
+YBWC,1,0.000286484
+YBWC,2,0.000169075
+YBWC,4,0.000101721
+YBWC,8,6.85811e-05
+PVS,1,0.000303495
+PVS,2,0.000282729
+PVS,4,0.000392222
+PVS,8,0.00207791
+Current Fen: 8/8/8/8/8/nk6/3b4/K7 b - - 0 1
+Minimax moves: 18
+AlphaBeta moves: 18
+Sequential Minimax,1,0.000183284
+Parallel Minimax,1,0.000220609
+Parallel Minimax,2,0.000175059
+Parallel Minimax,4,0.000113845
+Parallel Minimax,8,0.000102866
+Sequential AlphaBeta,1,0.000222492
+Naive Parallel Alpha Beta,1,0.000226116
+Naive Parallel Alpha Beta,2,0.000146842
+Naive Parallel Alpha Beta,4,0.000111914
+Naive Parallel Alpha Beta,8,0.000111568
+Naive YBWC Parallel Alpha Beta,1,0.000219691
+Naive YBWC Parallel Alpha Beta,2,0.000121677
+Naive YBWC Parallel Alpha Beta,4,8.31127e-05
+Naive YBWC Parallel Alpha Beta,8,7.35164e-05
+YBWC,1,0.000177646
+YBWC,2,0.000107467
+YBWC,4,8.01563e-05
+YBWC,8,6.82354e-05
+PVS,1,0.000165749
+PVS,2,0.000113559
+PVS,4,8.28385e-05
+PVS,8,7.46965e-05
+Minimax moves: 30
+AlphaBeta moves: 27
+Sequential Minimax,1,0.000309753
+Parallel Minimax,1,0.000372255
+Parallel Minimax,2,0.000263858
+Parallel Minimax,4,0.000202274
+Parallel Minimax,8,9.13739e-05
+Sequential AlphaBeta,1,0.000228536
+Naive Parallel Alpha Beta,1,0.000234377
+Naive Parallel Alpha Beta,2,0.000132823
+Naive Parallel Alpha Beta,4,8.03351e-05
+Naive Parallel Alpha Beta,8,5.98311e-05
+Naive YBWC Parallel Alpha Beta,1,0.000234747
+Naive YBWC Parallel Alpha Beta,2,0.000146055
+Naive YBWC Parallel Alpha Beta,4,0.000106347
+Naive YBWC Parallel Alpha Beta,8,8.05259e-05
+YBWC,1,0.00023762
+YBWC,2,0.000157976
+YBWC,4,0.000123787
+YBWC,8,0.000373816
+PVS,1,0.00023098
+PVS,2,0.000275683
+PVS,4,0.000420046
+PVS,8,0.00114826

@@ -1,0 +1,126 @@
+Average Speedups for Mate in 1
+
+Inner Speedup Results (Depth 3):
+Algorithm: YBWC
+  Threads: 1, Speedup: 1.00
+  Threads: 2, Speedup: 2.51
+  Threads: 4, Speedup: 3.72
+  Threads: 8, Speedup: 1.39
+
+Algorithm: Naive Parallel Alpha Beta
+  Threads: 1, Speedup: 1.00
+  Threads: 2, Speedup: 1.65
+  Threads: 4, Speedup: 2.68
+  Threads: 8, Speedup: 3.70
+
+Algorithm: Naive YBWC Parallel Alpha Beta
+  Threads: 1, Speedup: 1.00
+  Threads: 2, Speedup: 1.80
+  Threads: 4, Speedup: 2.88
+  Threads: 8, Speedup: 4.01
+
+Algorithm: Parallel Minimax
+  Threads: 1, Speedup: 1.00
+  Threads: 2, Speedup: 1.86
+  Threads: 4, Speedup: 3.21
+  Threads: 8, Speedup: 4.80
+
+Algorithm: PVS
+  Threads: 1, Speedup: 1.00
+  Threads: 2, Speedup: 1.86
+  Threads: 4, Speedup: 1.33
+  Threads: 8, Speedup: 0.24
+
+Inner Speedup Results (Depth 4):
+Algorithm: YBWC
+  Threads: 1, Speedup: 1.00
+  Threads: 2, Speedup: 2.57
+  Threads: 4, Speedup: 3.70
+  Threads: 8, Speedup: 1.22
+
+Algorithm: Naive Parallel Alpha Beta
+  Threads: 1, Speedup: 1.00
+  Threads: 2, Speedup: 1.52
+  Threads: 4, Speedup: 2.42
+  Threads: 8, Speedup: 3.44
+
+Algorithm: Naive YBWC Parallel Alpha Beta
+  Threads: 1, Speedup: 1.00
+  Threads: 2, Speedup: 1.80
+  Threads: 4, Speedup: 2.84
+  Threads: 8, Speedup: 4.01
+
+Algorithm: Parallel Minimax
+  Threads: 1, Speedup: 1.00
+  Threads: 2, Speedup: 1.86
+  Threads: 4, Speedup: 3.15
+  Threads: 8, Speedup: 4.47
+
+Algorithm: PVS
+  Threads: 1, Speedup: 1.00
+  Threads: 2, Speedup: 1.44
+  Threads: 4, Speedup: 0.73
+  Threads: 8, Speedup: 0.13
+
+Relative to Sequential Speedup Results (Depth 3):
+Algorithm: YBWC
+  Threads: 1, Speedup: 0.97
+  Threads: 2, Speedup: 2.43
+  Threads: 4, Speedup: 3.60
+  Threads: 8, Speedup: 1.35
+
+Algorithm: Naive Parallel Alpha Beta
+  Threads: 1, Speedup: 1.00
+  Threads: 2, Speedup: 1.65
+  Threads: 4, Speedup: 2.68
+  Threads: 8, Speedup: 3.71
+
+Algorithm: Naive YBWC Parallel Alpha Beta
+  Threads: 1, Speedup: 1.00
+  Threads: 2, Speedup: 1.80
+  Threads: 4, Speedup: 2.88
+  Threads: 8, Speedup: 4.02
+
+Algorithm: Parallel Minimax
+  Threads: 1, Speedup: 1.23
+  Threads: 2, Speedup: 2.29
+  Threads: 4, Speedup: 3.95
+  Threads: 8, Speedup: 5.89
+
+Algorithm: PVS
+  Threads: 1, Speedup: 0.85
+  Threads: 2, Speedup: 1.59
+  Threads: 4, Speedup: 1.14
+  Threads: 8, Speedup: 0.21
+
+Relative to Sequential Speedup Results (Depth 4):
+Algorithm: YBWC
+  Threads: 1, Speedup: 0.96
+  Threads: 2, Speedup: 2.45
+  Threads: 4, Speedup: 3.49
+  Threads: 8, Speedup: 1.16
+
+Algorithm: Naive Parallel Alpha Beta
+  Threads: 1, Speedup: 1.00
+  Threads: 2, Speedup: 1.52
+  Threads: 4, Speedup: 2.42
+  Threads: 8, Speedup: 3.45
+
+Algorithm: Naive YBWC Parallel Alpha Beta
+  Threads: 1, Speedup: 1.00
+  Threads: 2, Speedup: 1.79
+  Threads: 4, Speedup: 2.84
+  Threads: 8, Speedup: 4.00
+
+Algorithm: Parallel Minimax
+  Threads: 1, Speedup: 1.15
+  Threads: 2, Speedup: 2.14
+  Threads: 4, Speedup: 3.63
+  Threads: 8, Speedup: 5.16
+
+Algorithm: PVS
+  Threads: 1, Speedup: 0.80
+  Threads: 2, Speedup: 1.16
+  Threads: 4, Speedup: 0.62
+  Threads: 8, Speedup: 0.11
+
