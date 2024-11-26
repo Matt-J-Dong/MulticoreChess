@@ -1,4 +1,8 @@
 // play-bot.cpp
+//
+// Modification of main.cpp to interactively play with the bot by pasting in updated FENs. 
+// Developed by Matt-J-Dong
+//
 #include <iostream>
 #include <limits>
 #include <string>

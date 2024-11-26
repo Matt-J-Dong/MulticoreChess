@@ -1,7 +1,7 @@
 //
 // Simple Evaluation Function: Developed and Tested by Matt-J-Dong
 // At a depth of 6 (3 moves for each side), this function is good enough to play at a basic level.
-// It can beat a 1300 rated engine and draw a 1600 rated engine.
+// It can beat a 1600 rated engine and 1800 rated engine, so the current ELO of our bot is likely around 1700-1800 at that depth.
 //
 
 #ifndef EVALUATION_H
