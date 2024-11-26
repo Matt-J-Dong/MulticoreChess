@@ -8,7 +8,7 @@ This chess engine is built upon the [StockDory](https://github.com/TheBlackPlagu
 
 ## Instructions to run program (for Crunchy Machines)
 
-1. Download the repository onto your local computer and unzip.
+1. Download the repository onto your local computer and unzip. Rename the folder to MulticoreChess (to be consistent with our commands below - if using the default name 'MulticoreChess-master', you will need to replace the commands below with MulticoreChess-master rather than MulticoreChess).
 2. scp the folder to the Crunchy machines.
 3. cd into the folder with cd:
 
