@@ -39,8 +39,6 @@ The results are written onto disk with the name "results-mN.txt" where N represe
 
 ## Extra Programs
 
-We have also developed two 
-
 * `play-bot.cpp` is a variation on `main.cpp` that allows the user to paste in a new FEN every time after the engine calculates the best move for the previous FEN that was pasted in (it will start with the starting position). This allows the user to simulate playing the bot, which is how we tested the capabilities of our engine and evaluation function against other chess engines as well as humans. Just paste in a new FEN each time, and the bot will calculate what it thinks the best move in that position is, at the depth that you specified.
     * The program will complain if you paste in a FEN with an en passant target that is not applicable to the current player. For example, pasting in the FEN `rnbqkbnr/ppp2ppp/4p3/3p4/P7/2P5/1P1PPPPP/RNBQKBNR w KQkq d6 0 3` does not work because white has no pawn that can actually take the pawn that moved to d5 on d6. This is mainly relevant if you are pasting FENs from Chess.com. Just replace the en passant target with a `-` and the FEN will work perfectly `(rnbqkbnr/ppp2ppp/4p3/3p4/P7/2P5/1P1PPPPP/RNBQKBNR w KQkq - 0 3)`
 * `m4.cpp` calculates mate in 4 FENs. This was made a separate file because due to the amount of time it would take to run all of the algorithms 20 times for all of the FENs. Therefore, the number of times each FEN is tested with each specific algorithm has been lowered from 20 to 5. Despite this, it still took too long to run for us to add to the report. Naive parallel minimax being extremely slow may be partly to blame. You can run this at your own leisure.
