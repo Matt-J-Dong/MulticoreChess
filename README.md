@@ -4,7 +4,7 @@ In this project, we build a parallel chess engine using OpenMP and run experimen
 
 ## Original repository
 
-This chess engine is built upon the [Stockdory](https://github.com/TheBlackPlague/StockDory) chess system. We only used the chessboard logic, so we replaced the original repository's engine and evaluation function to implement our own.
+This chess engine is built upon the [StockDory](https://github.com/TheBlackPlague/StockDory) chess system. We only used the chessboard logic, so we replaced the original repository's engine and evaluation function to implement our own.
 
 ## Instructions to run program (for Crunchy Machines)
 
