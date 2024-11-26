@@ -37,6 +37,13 @@ The results are written onto disk with the name "results-mN.txt" where N represe
 2. Then, the program will ask you for a FEN. This is a chess position notation. If you do not have a FEN and want to start from the starting position, enter 0.
 3. Lastly, enter your thread number for the algorithm. If you've picked a sequential algorithm, this number will do nothing. Otherwise, it will set the number of threads to that value for the parallel algorithms. Note that ```omp_set_nested()``` is not present/commented out, so you will be running the non-nested version of this program by default - this is because the nested version has much more limitations on thread and speed. To try the nested version, this is only in test case 8, which you need to uncomment out the ```omp_set_nested(1)``` for it to work and only run it on m1 or m2 with lower threads similar to what we reported in our report.
 
+## Extra Programs
+
+We have also developed two 
+
+* `play-bot.cpp` is a variation on `main.cpp` that allows the user to paste in a new FEN every time after the engine calculates the best move for the previous FEN that was pasted in (it will start with the starting position). This allows the user to simulate playing the bot, which is how we tested the capabilities of our engine and evaluation function against other chess engines as well as humans. Just paste in a new FEN each time, and the bot will calculate what it thinks the best move in that position is, at the depth that you specified.
+** The program will complain if you paste in a FEN with an en passant target that is not applicable to the current player. For example, pasting in the FEN `rnbqkbnr/ppp2ppp/4p3/3p4/P7/2P5/1P1PPPPP/RNBQKBNR w KQkq d6 0 3` does not work because white has no pawn that can actually take the pawn that moved to d5 on d6. This is mainly relevant if you are pasting FENs from Chess.com. Just replace the en passant target with a `-` and the FEN will work perfectly `(rnbqkbnr/ppp2ppp/4p3/3p4/P7/2P5/1P1PPPPP/RNBQKBNR w KQkq - 0 3)`
+* `m4.cpp` calculates mate in 4 FENs. This was made a separate file because due to the amount of time it would take to run all of the algorithms 20 times for all of the FENs. Therefore, the number of times each FEN is tested with each specific algorithm has been lowered from 20 to 5. Despite this, it still took too long to run for us to add to the report. Naive parallel minimax being extremely slow may be partly to blame. You can run this at your own leisure.
 
 ### Additional Notes
 

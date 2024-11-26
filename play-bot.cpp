@@ -88,6 +88,9 @@ int main(int argc, char* argv[]) {
         case 2:
             algorithmName = "Principal Variation Search (PVS)";
             break;
+        case 3:
+            algorithmName = "Parallel Minimax";
+            break;
         default:
             // This case should never occur due to the earlier validation
             algorithmName = "Unknown Algorithm";
@@ -238,7 +241,7 @@ int main(int argc, char* argv[]) {
             else if (currentPlayer == Black) {
                 std::cout << "Performing Parallel Minimax for Black...\n";
                 // Perform Parallel Minimax for Black
-                std::pair<std::array<Move, maxDepth>, int> result = engine.parallelMinimax<White, maxDepth>(
+                std::pair<std::array<Move, maxDepth>, int> result = engine.parallelMinimax<Black, maxDepth>(
                     chessBoard,
                     depth
                 );
