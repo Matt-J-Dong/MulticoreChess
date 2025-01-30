@@ -1,4 +1,4 @@
-# Mulitcore Chess Project
+# Multicore Chess Project
 
 In this project, we build a parallel chess engine using OpenMP and run experiments to explain the speed of the algorithms compared to their sequential counterpart. This program is made as part of the Multicore Processors class in NYU.
 
